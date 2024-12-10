@@ -1,0 +1,74 @@
+<html>
+    <head>
+        <title>Even Odd App</title>
+        <style>
+            * { font-size: 50px; }
+            body { background-color: lightblue;}
+        </style>
+    </head>
+    <body>
+        <center>
+            <h1>Even Odd App</h1>
+            <form onsubmit="check()">
+                <input type="number" placeholder="enter integer" id="num" />
+                <br/><br/>
+                <input type="submit" value="M1" />
+                <input type="submit" value="M2" />
+                <input type="submit" value="M3" />
+            </form>
+                <h2 id="msg" />
+
+            <script>
+                function check()
+                {
+                    event.preventDefault();
+                    let num = document.getElementById("num");
+                    let msg = document.getElementById("msg");
+                    let action = document.activeElement.value;
+
+                    if (num.value === "") 
+                    {
+                        alert("please enter integer");
+                        msg.innerHTML = "";
+                        num.focus();
+                        return;    
+                    }
+
+                    let n = parseInt(num.value);
+
+                    if (action === "M1") 
+                    {
+                        let ans = n % 2 === 0 ? "even" : "odd";
+                        msg.innerHTML = "M1 -->" + ans;    
+                    }
+                    else if (action === "M2") 
+                    {
+                        let ans = "";
+                        if (n % 2 === 0) 
+                        {
+                            ans = "M2 --> even";    
+                        }
+                        else
+                        {
+                            ans = "M2 --> odd";
+                        }
+                        msg.innerHTML = ans;    
+                    }
+                    else if (action === "M3") 
+                    {
+                        let result = n % 2;
+                        switch (result) 
+                        {
+                            case 0:
+                                msg.innerHTML = "M3 --> even";    
+                                break;
+                        
+                            default:
+                                msg.innerHTML = "M3 --> odd";
+                        }    
+                    }
+                }
+            </script>
+        </center>
+    </body>
+</html>
